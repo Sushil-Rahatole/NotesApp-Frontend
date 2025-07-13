@@ -76,18 +76,18 @@ export default function PYQs() {
   };
 
   return (
-    <section className="py-16 bg-gray-50 min-h-screen">
+    <section className="py-16 bg-gradient-to-br from-teal-50 via-purple-50 to-orange-50 min-h-screen">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">Previous Year Question Papers</h1>
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-teal-600 to-purple-600 bg-clip-text text-transparent mb-4">Previous Year Question Papers</h1>
             <p className="text-lg text-gray-600">
-              Access and download previous year question papers to enhance your exam preparation
+              Access and download authentic PYQs to enhance your exam preparation
             </p>
           </div>
 
           {/* Filter Section */}
-          <div className="bg-white p-6 rounded-lg mb-8 shadow-sm">
+          <div className="bg-white p-6 rounded-lg mb-8 shadow-lg border border-purple-100">
             <h3 className="text-xl font-semibold text-gray-900 mb-4">Filter PYQs</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
@@ -146,7 +146,7 @@ export default function PYQs() {
                     </div>
                     <Button
                       onClick={() => handleDownload(pyq)}
-                      className="w-full sppu-blue text-white hover:bg-blue-600 transition-colors"
+                      className="w-full accent-teal text-white hover:bg-teal-600 transition-colors"
                     >
                       <Download className="mr-2 h-4 w-4" />
                       Download

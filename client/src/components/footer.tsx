@@ -24,14 +24,14 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="sppu-dark text-white py-12">
+    <footer className="neutral-dark text-white py-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
           <div className="lg:col-span-1">
-            <h3 className="text-xl font-bold mb-4">SPPU Notes & PYQs Hub</h3>
+            <h3 className="text-xl font-bold mb-4">StudyHub</h3>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              Your trusted companion for SPPU exam preparation. Quality study materials for every student.
+              Quality Notes & PYQs for student success. Your trusted platform for exam preparation across universities.
             </p>
             <div className="flex space-x-4">
               <a
@@ -72,9 +72,9 @@ export default function Footer() {
               {quickLinks.map((link) => (
                 <li key={link.name}>
                   <Link href={link.href}>
-                    <a className="text-gray-300 hover:text-white transition-colors">
+                    <span className="text-gray-300 hover:text-white transition-colors cursor-pointer">
                       {link.name}
-                    </a>
+                    </span>
                   </Link>
                 </li>
               ))}
@@ -118,7 +118,7 @@ export default function Footer() {
 
         <div className="border-t border-gray-600 mt-8 pt-8 text-center">
           <p className="text-gray-300">
-            &copy; 2024 SPPU Notes & PYQs Hub. All rights reserved. Made with ❤️ for students.
+            &copy; 2024 StudyHub. All rights reserved. Made with ❤️ for students everywhere.
           </p>
         </div>
       </div>

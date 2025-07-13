@@ -46,15 +46,15 @@ export default function SubjectsList() {
   };
 
   return (
-    <div className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
-      <div className="sppu-blue text-white p-4">
+    <div className="bg-white border border-purple-200 rounded-lg overflow-hidden shadow-lg">
+      <div className="primary-orange text-white p-4">
         <h3 className="text-lg font-semibold">Available Subjects</h3>
       </div>
       <div className="divide-y divide-gray-200">
         {subjects.map((subject) => (
           <div
             key={subject.id}
-            className="p-4 flex justify-between items-center hover:bg-gray-50 transition-colors"
+            className="p-4 flex justify-between items-center hover:bg-gradient-to-r hover:from-orange-50 hover:to-purple-50 transition-all duration-200"
           >
             <div>
               <h4 className="font-medium text-gray-900">{subject.name}</h4>
@@ -62,7 +62,7 @@ export default function SubjectsList() {
             </div>
             <Button
               onClick={() => handleViewSubject(subject)}
-              className="sppu-blue text-white hover:bg-blue-600 transition-colors"
+              className="primary-purple text-white hover:bg-purple-700 transition-colors shadow-md"
             >
               View
             </Button>

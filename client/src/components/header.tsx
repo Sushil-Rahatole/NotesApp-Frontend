@@ -18,14 +18,14 @@ export default function Header() {
   };
 
   return (
-    <header className="sppu-dark text-white sticky top-0 z-50 shadow-lg">
+    <header className="neutral-dark text-white sticky top-0 z-50 shadow-lg">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo/Brand */}
           <div className="flex items-center">
             <Link href="/">
-              <h1 className="text-xl font-bold cursor-pointer hover:text-blue-300 transition-colors">
-                SPPU Notes & PYQs Hub
+              <h1 className="text-xl font-bold cursor-pointer hover:text-orange-300 transition-colors">
+                StudyHub - Quality Notes & PYQs
               </h1>
             </Link>
           </div>
@@ -34,13 +34,13 @@ export default function Header() {
           <nav className="hidden md:flex space-x-8">
             {navigation.map((item) => (
               <Link key={item.name} href={item.href}>
-                <a
-                  className={`hover:text-blue-300 transition-colors duration-200 font-medium ${
+                <span
+                  className={`hover:text-blue-300 transition-colors duration-200 font-medium cursor-pointer ${
                     location === item.href ? "text-blue-300" : ""
                   }`}
                 >
                   {item.name}
-                </a>
+                </span>
               </Link>
             ))}
           </nav>
@@ -65,14 +65,14 @@ export default function Header() {
             <nav className="flex flex-col space-y-4">
               {navigation.map((item) => (
                 <Link key={item.name} href={item.href}>
-                  <a
-                    className={`hover:text-blue-300 transition-colors duration-200 font-medium ${
+                  <span
+                    className={`hover:text-blue-300 transition-colors duration-200 font-medium cursor-pointer ${
                       location === item.href ? "text-blue-300" : ""
                     }`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {item.name}
-                  </a>
+                  </span>
                 </Link>
               ))}
             </nav>

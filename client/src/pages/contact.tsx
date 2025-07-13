@@ -94,17 +94,17 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-16 bg-white">
+    <section id="contact" className="py-16 bg-gradient-to-br from-purple-50 to-orange-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Get In Touch</h2>
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-orange-500 bg-clip-text text-transparent mb-4">Get In Touch</h2>
             <p className="text-lg text-gray-600">
-              Have questions, suggestions, or want to contribute? We'd love to hear from you!
+              Have questions, suggestions, or want to contribute content? We'd love to hear from you!
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="bg-gray-50 p-8 rounded-2xl shadow-sm">
+          <form onSubmit={handleSubmit} className="bg-white p-8 rounded-2xl shadow-lg border border-purple-100">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div>
                 <Label htmlFor="firstName">First Name</Label>
@@ -170,7 +170,7 @@ export default function Contact() {
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full sppu-blue text-white hover:bg-blue-600 transition-colors duration-200"
+              className="w-full primary-purple text-white hover:bg-purple-700 transition-colors duration-200"
             >
               <Send className="mr-2 h-4 w-4" />
               {isSubmitting ? "Sending..." : "Send Message"}

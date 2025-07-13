@@ -24,11 +24,15 @@
   --ring: hsl(20, 14.3%, 4.1%);
   --radius: 0.5rem;
   
-  /* Custom SPPU colors */
-  --sppu-dark: hsl(215, 28%, 17%);
-  --sppu-gray: hsl(215, 13%, 42%);
-  --sppu-blue: hsl(207, 90%, 54%);
-  --sppu-green: hsl(158, 64%, 52%);
+  /* Custom Educational Platform colors - Encouraging & Energetic */
+  --primary-purple: hsl(260, 60%, 45%);
+  --primary-orange: hsl(25, 95%, 53%);
+  --accent-teal: hsl(180, 70%, 40%);
+  --accent-green: hsl(142, 70%, 49%);
+  --neutral-dark: hsl(220, 26%, 14%);
+  --neutral-gray: hsl(220, 14%, 32%);
+  --background-light: hsl(35, 100%, 98%);
+  --success-green: hsl(145, 63%, 42%);
 }
 
 .dark {
@@ -69,19 +73,35 @@
 }
 
 @layer utilities {
-  .sppu-dark {
-    background-color: var(--sppu-dark);
+  .primary-purple {
+    background-color: var(--primary-purple);
   }
   
-  .sppu-gray {
-    background-color: var(--sppu-gray);
+  .primary-orange {
+    background-color: var(--primary-orange);
   }
   
-  .sppu-blue {
-    background-color: var(--sppu-blue);
+  .accent-teal {
+    background-color: var(--accent-teal);
   }
   
-  .sppu-green {
-    color: var(--sppu-green);
+  .accent-green {
+    background-color: var(--accent-green);
+  }
+  
+  .neutral-dark {
+    background-color: var(--neutral-dark);
+  }
+  
+  .neutral-gray {
+    background-color: var(--neutral-gray);
+  }
+  
+  .success-green {
+    color: var(--success-green);
+  }
+  
+  .bg-warm {
+    background-color: var(--background-light);
   }
 }

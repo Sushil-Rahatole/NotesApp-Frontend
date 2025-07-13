@@ -1,8 +1,8 @@
-# SPPU Notes & PYQs Hub
+# StudyHub - Quality Notes & PYQs Platform
 
 ## Overview
 
-This is a full-stack web application designed for SPPU (Savitribai Phule Pune University) students to access study materials and previous year question papers. The application provides a clean, educational interface with filtering capabilities for different academic years and semesters.
+StudyHub is a comprehensive educational platform that provides quality study materials and previous year question papers for university students. While initially focused on SPPU (Savitribai Phule Pune University), the platform is designed to expand across multiple universities. The application features an encouraging, student-friendly interface with comprehensive filtering capabilities including academic years, semesters, and pattern support.
 
 ## User Preferences
 
@@ -51,11 +51,11 @@ Preferred communication style: Simple, everyday language.
 - **Migration System**: Drizzle Kit for database schema management
 
 ### Frontend Components
-- **Header**: Navigation with mobile-responsive menu
-- **Sidebar**: SPPU branding and university information
-- **FilterSection**: Academic year and semester selection
-- **SubjectsList**: Display of available subjects with descriptions
-- **Footer**: Links and university information
+- **Header**: Navigation with mobile-responsive menu and StudyHub branding
+- **Sidebar**: University selection component (currently SPPU, expandable)  
+- **FilterSection**: Academic year, semester, and pattern selection (2019/2024)
+- **SubjectsList**: Display of available subjects with descriptions (defaults to FE Sem 1)
+- **Footer**: Links and platform information
 
 ### Data Storage
 - **Development**: In-memory storage implementation for rapid prototyping
@@ -63,7 +63,13 @@ Preferred communication style: Simple, everyday language.
 - **Storage Interface**: Abstracted storage layer supporting multiple backends
 
 ### UI/UX Design
-- **Design System**: Custom SPPU color palette (dark blue, gray, blue, green)
+- **Design System**: Educational color palette focused on encouraging student engagement
+  - Primary Purple (#6B46C1): Used for main UI elements and branding
+  - Primary Orange (#F97316): Used for highlights and call-to-action elements  
+  - Accent Teal (#0D9488): Used for secondary actions and accents
+  - Success Green (#059669): Used for positive feedback and completion states
+  - Neutral tones for backgrounds and text
+- **Psychology**: Colors chosen to stimulate learning, reduce stress, and encourage engagement
 - **Responsive Design**: Mobile-first approach with Tailwind CSS
 - **Accessibility**: Radix UI primitives ensure WCAG compliance
 - **Toast Notifications**: User feedback system for actions
@@ -115,3 +121,30 @@ Preferred communication style: Simple, everyday language.
 - **Connection Pooling**: Neon serverless handles connection management
 
 The application is designed for easy deployment on platforms like Replit, Vercel, or Railway with minimal configuration required beyond setting the database URL.
+
+## Recent Changes (July 2024)
+
+### Major Updates
+1. **Rebranding**: Changed from "SPPU Notes & PYQs Hub" to "StudyHub - Quality Notes & PYQs"
+   - Focus shifted from university-specific to quality-focused platform
+   - Maintains SPPU as primary university while preparing for expansion
+
+2. **Enhanced Color Psychology**: Implemented encouraging educational color scheme
+   - Purple, orange, and teal gradients designed to stimulate learning
+   - Warm background tones to reduce study stress
+   - Colors chosen based on educational psychology principles
+
+3. **Enhanced Filtering System**:
+   - Added pattern selection (2019 Pattern, 2024 Pattern)
+   - Set intelligent defaults: FE (First Year), Semester 1, 2019 Pattern
+   - University selection dropdown (SPPU active, others marked as "Coming Soon")
+
+4. **Improved User Experience**:
+   - Default subject display shows FE Semester 1 subjects immediately
+   - Gradient backgrounds and improved visual hierarchy
+   - Enhanced mobile responsiveness with warm, inviting design
+
+### User Preferences
+- Simple, everyday language in communications
+- Focus on student encouragement and accessibility
+- Platform should feel welcoming and reduce academic stress

@@ -4,30 +4,41 @@ import FilterSection from "@/components/filter-section";
 import SubjectsList from "@/components/subjects-list";
 
 export default function Home() {
-  const [selectedYear, setSelectedYear] = useState("");
-  const [selectedSem, setSelectedSem] = useState("");
+  const [selectedYear, setSelectedYear] = useState("FE"); // Default to First Year
+  const [selectedSem, setSelectedSem] = useState("1"); // Default to Semester 1
+  const [selectedPattern, setSelectedPattern] = useState("2019"); // Default to 2019 pattern
+  const [selectedUniversity, setSelectedUniversity] = useState("SPPU"); // Default to SPPU
 
   return (
-    <section id="home" className="bg-white">
+    <section id="home" className="bg-warm min-h-screen">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex flex-col lg:flex-row gap-8">
-          <Sidebar />
+          <Sidebar 
+            selectedUniversity={selectedUniversity}
+            onUniversityChange={setSelectedUniversity}
+          />
 
-          <div className="flex-1 bg-white rounded-lg p-6 lg:p-8">
+          <div className="flex-1 bg-white rounded-lg p-6 lg:p-8 shadow-lg">
             <div className="max-w-4xl">
-              <h1 className="text-4xl font-bold text-gray-900 mb-4">
-                Welcome to SPPU Notes & PYQs Hub
+              <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-orange-500 bg-clip-text text-transparent mb-4">
+                Welcome to StudyHub
               </h1>
+              <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+                Quality Notes & Previous Year Question Papers
+              </h2>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                Your one-stop destination for comprehensive study materials, previous year question papers, and academic resources. 
-                Access notes from top students and prepare effectively for your SPPU examinations.
+                Your trusted companion for exam preparation. Access high-quality study materials, comprehensive notes, 
+                and previous year question papers from top students. Currently serving SPPU students with plans to expand 
+                to more universities.
               </p>
 
               <FilterSection
                 selectedYear={selectedYear}
                 selectedSem={selectedSem}
+                selectedPattern={selectedPattern}
                 onYearChange={setSelectedYear}
                 onSemChange={setSelectedSem}
+                onPatternChange={setSelectedPattern}
               />
 
               <SubjectsList />
