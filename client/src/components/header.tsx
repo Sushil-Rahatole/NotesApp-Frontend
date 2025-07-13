@@ -25,7 +25,7 @@ export default function Header() {
           <div className="flex items-center">
             <Link href="/">
               <h1 className="text-xl font-bold cursor-pointer hover:text-orange-300 transition-colors">
-                StudyHub - Quality Notes & PYQs
+                StudyHub
               </h1>
             </Link>
           </div>

@@ -11,14 +11,14 @@ export default function Home() {
 
   return (
     <section id="home" className="bg-warm min-h-screen">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex flex-col lg:flex-row gap-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 max-w-7xl">
+        <div className="flex flex-col xl:flex-row gap-8">
           <Sidebar 
             selectedUniversity={selectedUniversity}
             onUniversityChange={setSelectedUniversity}
           />
 
-          <div className="flex-1 bg-white rounded-lg p-6 lg:p-8 shadow-lg">
+          <div className="flex-1 bg-white rounded-2xl p-6 lg:p-8 shadow-xl border border-purple-100">
             <div className="max-w-4xl">
               <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-orange-500 bg-clip-text text-transparent mb-4">
                 Welcome to StudyHub
@@ -41,7 +41,11 @@ export default function Home() {
                 onPatternChange={setSelectedPattern}
               />
 
-              <SubjectsList />
+              <SubjectsList 
+                selectedYear={selectedYear}
+                selectedSem={selectedSem}
+                selectedPattern={selectedPattern}
+              />
             </div>
           </div>
         </div>
