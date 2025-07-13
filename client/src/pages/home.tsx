@@ -4,6 +4,7 @@ import FilterSection from "@/components/filter-section";
 import SubjectsList from "@/components/subjects-list";
 
 export default function Home() {
+  const [selectedBranch, setSelectedBranch] = useState("COMP"); // Default to Computer Engineering
   const [selectedYear, setSelectedYear] = useState("FE"); // Default to First Year
   const [selectedSem, setSelectedSem] = useState("1"); // Default to Semester 1
   const [selectedPattern, setSelectedPattern] = useState("2019"); // Default to 2019 pattern
@@ -33,15 +34,18 @@ export default function Home() {
               </p>
 
               <FilterSection
+                selectedBranch={selectedBranch}
                 selectedYear={selectedYear}
                 selectedSem={selectedSem}
                 selectedPattern={selectedPattern}
+                onBranchChange={setSelectedBranch}
                 onYearChange={setSelectedYear}
                 onSemChange={setSelectedSem}
                 onPatternChange={setSelectedPattern}
               />
 
               <SubjectsList 
+                selectedBranch={selectedBranch}
                 selectedYear={selectedYear}
                 selectedSem={selectedSem}
                 selectedPattern={selectedPattern}

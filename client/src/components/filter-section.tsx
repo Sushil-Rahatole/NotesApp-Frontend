@@ -1,18 +1,33 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 interface FilterSectionProps {
+  selectedBranch: string;
   selectedYear: string;
   selectedSem: string;
   selectedPattern: string;
+  onBranchChange: (branch: string) => void;
   onYearChange: (year: string) => void;
   onSemChange: (sem: string) => void;
   onPatternChange: (pattern: string) => void;
 }
 
+const branches = [
+  { id: "COMP", name: "Computer Engineering", shortName: "COMP" },
+  { id: "MECH", name: "Mechanical Engineering", shortName: "MECH" },
+  { id: "CIVIL", name: "Civil Engineering", shortName: "CIVIL" },
+  { id: "ELEC", name: "Electrical Engineering", shortName: "ELEC" },
+  { id: "ELECTRONICS", name: "Electronics Engineering", shortName: "ELEC" },
+  { id: "IT", name: "Information Technology", shortName: "IT" },
+  { id: "EXTC", name: "Electronics & Telecommunication", shortName: "EXTC" },
+  { id: "INSTRUMENTATION", name: "Instrumentation & Control", shortName: "INST" },
+];
+
 export default function FilterSection({
+  selectedBranch,
   selectedYear,
   selectedSem,
   selectedPattern,
+  onBranchChange,
   onYearChange,
   onSemChange,
   onPatternChange,
@@ -20,6 +35,25 @@ export default function FilterSection({
   return (
     <div className="bg-gradient-to-br from-orange-50 to-purple-50 p-6 rounded-lg mb-8 border border-orange-200">
       <h3 className="text-xl font-semibold text-gray-900 mb-4">Find Your Study Materials</h3>
+      
+      {/* Branch Selection - Full width */}
+      <div className="mb-6">
+        <label className="block text-sm font-medium text-gray-700 mb-2">Engineering Branch</label>
+        <Select value={selectedBranch} onValueChange={onBranchChange}>
+          <SelectTrigger className="w-full border-orange-300 focus:border-purple-500">
+            <SelectValue placeholder="Select Engineering Branch" />
+          </SelectTrigger>
+          <SelectContent>
+            {branches.map((branch) => (
+              <SelectItem key={branch.id} value={branch.id}>
+                {branch.name} ({branch.shortName})
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+
+      {/* Year, Semester, Pattern filters */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">Academic Year</label>

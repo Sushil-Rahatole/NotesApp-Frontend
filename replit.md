@@ -134,15 +134,24 @@ The application is designed for easy deployment on platforms like Replit, Vercel
    - Warm background tones to reduce study stress
    - Colors chosen based on educational psychology principles
 
-3. **Enhanced Filtering System**:
-   - Added pattern selection (2019 Pattern, 2024 Pattern)
-   - Set intelligent defaults: FE (First Year), Semester 1, 2019 Pattern
+3. **Multi-Branch Engineering Support** (Latest Update):
+   - Added comprehensive branch selection for all SPPU engineering streams
+   - Supports 8 engineering branches: Computer, Mechanical, Civil, Electrical, Electronics, IT, EXTC, Instrumentation
+   - Branch-specific subject databases with authentic SPPU curriculum
+   - Intelligent filtering: FE shows common subjects, SE/TE/BE shows branch-specific subjects
+   - Over 200+ subjects across all branches and patterns
+
+4. **Enhanced Filtering System**:
+   - Added branch selection as primary filter
+   - Pattern selection (2019 Pattern, 2024 Pattern)
+   - Set intelligent defaults: Computer Engineering, FE (First Year), Semester 1, 2019 Pattern
    - University selection dropdown (SPPU active, others marked as "Coming Soon")
 
-4. **Improved User Experience**:
+5. **Improved User Experience**:
    - Default subject display shows FE Semester 1 subjects immediately
    - Gradient backgrounds and improved visual hierarchy
    - Enhanced mobile responsiveness with warm, inviting design
+   - Creative university selector with expandable cards and status indicators
 
 ### User Preferences
 - Simple, everyday language in communications
