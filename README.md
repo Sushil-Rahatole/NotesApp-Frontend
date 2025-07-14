@@ -39,12 +39,6 @@ Whether you're preparing for semester exams, brushing up on subjects, or followi
 
 ---
 
-## 📸 Preview
-
-> _Add screenshots or a live demo link here if available._
-
----
-
 ## 🤝 Contribution
 
 Have ideas or want to improve the app? Feel free to fork this repo, make your changes, and open a pull request!
