@@ -45,7 +45,7 @@ Have ideas or want to improve the app? Feel free to fork this repo, make your ch
 
 ```bash
 # Clone the repo
-git clone https://github.com/your-username/sppu-noteshub.git
+git clone https://github.com/Sushil-Rahatole/NotesApp-Frontend.git
 
 # Install dependencies
 npm install
