@@ -1,6 +1,6 @@
 # 📚 SPPU NotesHub
 
-**SPPU NotesHub** is a React-based frontend application designed to help engineering students of **Savitribai Phule Pune University (SPPU)** access well-structured notes and previous year question papers (PYQs) — all in one place.
+**SPPU NotesHub** is a React-based frontend application designed to help engineering students of various universities access well-structured notes and previous year question papers (PYQs) — all in one place.
 
 ---
 
