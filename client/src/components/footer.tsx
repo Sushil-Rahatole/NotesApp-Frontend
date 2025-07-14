@@ -118,7 +118,7 @@ export default function Footer() {
 
         <div className="border-t border-gray-600 mt-8 pt-8 text-center">
           <p className="text-gray-300">
-            &copy; 2024 StudyHub. All rights reserved. Made with ❤️ for students everywhere.
+            &copy; 2025 StudyHub. All rights reserved. Made with ❤️ for engineering students.
           </p>
         </div>
       </div>

@@ -58,13 +58,13 @@ const pyqs: PYQ[] = [
 ];
 
 export default function PYQs() {
-  const [selectedYear, setSelectedYear] = useState("");
-  const [selectedSem, setSelectedSem] = useState("");
+  const [selectedYear, setSelectedYear] = useState<string | null>(null);
+  const [selectedSem, setSelectedSem] = useState<string | null>(null);
   const { toast } = useToast();
 
   const filteredPYQs = pyqs.filter((pyq) => {
-    if (selectedYear && pyq.year !== selectedYear) return false;
-    if (selectedSem && pyq.semester !== selectedSem) return false;
+    if (selectedYear && selectedYear !== "all" && pyq.year !== selectedYear) return false;
+    if (selectedSem && selectedSem !== "all" && pyq.semester !== selectedSem) return false;
     return true;
   });
 
@@ -92,12 +92,12 @@ export default function PYQs() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Academic Year</label>
-                <Select value={selectedYear} onValueChange={setSelectedYear}>
+                <Select value={selectedYear ?? "all"} onValueChange={(val) => setSelectedYear(val === "all" ? null : val)}>
                   <SelectTrigger className="w-full">
                     <SelectValue placeholder="All Years" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">All Years</SelectItem>
+                    <SelectItem value="all">All Years</SelectItem>
                     <SelectItem value="FE">First Year (FE)</SelectItem>
                     <SelectItem value="SE">Second Year (SE)</SelectItem>
                     <SelectItem value="TE">Third Year (TE)</SelectItem>
@@ -108,12 +108,12 @@ export default function PYQs() {
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Semester</label>
-                <Select value={selectedSem} onValueChange={setSelectedSem}>
+                <Select value={selectedSem ?? "all"} onValueChange={(val) => setSelectedSem(val === "all" ? null : val)}>
                   <SelectTrigger className="w-full">
                     <SelectValue placeholder="All Semesters" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">All Semesters</SelectItem>
+                    <SelectItem value="all">All Semesters</SelectItem>
                     <SelectItem value="1">Semester I</SelectItem>
                     <SelectItem value="2">Semester II</SelectItem>
                   </SelectContent>
