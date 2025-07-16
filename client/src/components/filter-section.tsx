@@ -1,5 +1,6 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
+
 interface FilterSectionProps {
   selectedBranch: string;
   selectedYear: string;
@@ -9,6 +10,7 @@ interface FilterSectionProps {
   onYearChange: (year: string) => void;
   onSemChange: (sem: string) => void;
   onPatternChange: (pattern: string) => void;
+  // onFetchSubjects: () => void; // ✅ NEW
 }
 
 const branches = [
@@ -35,8 +37,8 @@ export default function FilterSection({
   return (
     <div className="bg-gradient-to-br from-orange-50 to-purple-50 p-6 rounded-lg mb-8 border border-orange-200">
       <h3 className="text-xl font-semibold text-gray-900 mb-4">Find Your Study Materials</h3>
-      
-      {/* Branch Selection - Full width */}
+
+      {/* Branch Selection */}
       <div className="mb-6">
         <label className="block text-sm font-medium text-gray-700 mb-2">Engineering Branch</label>
         <Select value={selectedBranch} onValueChange={onBranchChange}>
@@ -45,7 +47,7 @@ export default function FilterSection({
           </SelectTrigger>
           <SelectContent>
             {branches.map((branch) => (
-              <SelectItem key={branch.id} value={branch.id}>
+              <SelectItem key={branch.id} value={branch.name}> {/* ✅ use branch.name */}
                 {branch.name} ({branch.shortName})
               </SelectItem>
             ))}
@@ -53,7 +55,7 @@ export default function FilterSection({
         </Select>
       </div>
 
-      {/* Year, Semester, Pattern filters */}
+      {/* Filters */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">Academic Year</label>
@@ -62,10 +64,8 @@ export default function FilterSection({
               <SelectValue placeholder="Select Year" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="FE">First Year (FE)</SelectItem>
-              <SelectItem value="SE">Second Year (SE)</SelectItem>
-              <SelectItem value="TE">Third Year (TE)</SelectItem>
-              <SelectItem value="BE">Final Year (BE)</SelectItem>
+              <SelectItem value="2023">2023</SelectItem>
+              <SelectItem value="2024">2024</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -79,6 +79,7 @@ export default function FilterSection({
             <SelectContent>
               <SelectItem value="1">Semester I</SelectItem>
               <SelectItem value="2">Semester II</SelectItem>
+              <SelectItem value="6">Semester VI</SelectItem> {/* for your test */}
             </SelectContent>
           </Select>
         </div>
@@ -90,12 +91,15 @@ export default function FilterSection({
               <SelectValue placeholder="Select Pattern" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="2019">2019 Pattern</SelectItem>
-              <SelectItem value="2024">2024 Pattern</SelectItem>
+              <SelectItem value="2019 Pattern">2019 Pattern</SelectItem>
+              <SelectItem value="2024 Pattern">2024 Pattern</SelectItem>
+              <SelectItem value="CBCS">CBCS</SelectItem> {/* for your test */}
             </SelectContent>
           </Select>
         </div>
       </div>
+
+      
     </div>
   );
 }

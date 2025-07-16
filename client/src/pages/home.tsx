@@ -4,11 +4,11 @@ import FilterSection from "@/components/filter-section";
 import SubjectsList from "@/components/subjects-list";
 
 export default function Home() {
-  const [selectedBranch, setSelectedBranch] = useState("COMP"); // Default to Computer Engineering
-  const [selectedYear, setSelectedYear] = useState("FE"); // Default to First Year
-  const [selectedSem, setSelectedSem] = useState("1"); // Default to Semester 1
-  const [selectedPattern, setSelectedPattern] = useState("2019"); // Default to 2019 pattern
-  const [selectedUniversity, setSelectedUniversity] = useState("SPPU"); // Default to SPPU
+  const [selectedBranch, setSelectedBranch] = useState("");
+  const [selectedYear, setSelectedYear] = useState("");
+  const [selectedSem, setSelectedSem] = useState("");
+  const [selectedPattern, setSelectedPattern] = useState("");
+  const [selectedUniversity, setSelectedUniversity] = useState("SPPU");
 
   return (
     <section id="home" className="bg-warm min-h-screen">
@@ -45,10 +45,10 @@ export default function Home() {
               />
 
               <SubjectsList 
-                selectedBranch={selectedBranch}
-                selectedYear={selectedYear}
-                selectedSem={selectedSem}
-                selectedPattern={selectedPattern}
+                branch={selectedBranch}
+                year={selectedYear}
+                sem={selectedSem}
+                pattern={selectedPattern}
               />
             </div>
           </div>
