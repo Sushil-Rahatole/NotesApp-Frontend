@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { Link, useLocation } from "wouter";
+import { NavLink, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [location] = useLocation();
+  const location = useLocation();
 
   const navigation = [
     { name: "Home", href: "/" },
@@ -23,25 +23,25 @@ export default function Header() {
         <div className="flex justify-between items-center h-16">
           {/* Logo/Brand */}
           <div className="flex items-center">
-            <Link href="/">
-              <h1 className="text-xl font-bold cursor-pointer hover:text-orange-300 transition-colors">
-                StudyHub
-              </h1>
-            </Link>
+            <NavLink to="/" className="text-xl font-bold hover:text-orange-300">
+              StudyHub
+            </NavLink>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
             {navigation.map((item) => (
-              <Link key={item.name} href={item.href}>
-                <span
-                  className={`hover:text-blue-300 transition-colors duration-200 font-medium cursor-pointer ${
-                    location === item.href ? "text-blue-300" : ""
-                  }`}
-                >
-                  {item.name}
-                </span>
-              </Link>
+              <NavLink
+                key={item.name}
+                to={item.href}
+                className={({ isActive }) =>
+                  `hover:text-blue-300 font-medium transition-colors cursor-pointer ${
+                    isActive ? "text-blue-300" : ""
+                  }`
+                }
+              >
+                {item.name}
+              </NavLink>
             ))}
           </nav>
 
@@ -64,16 +64,18 @@ export default function Header() {
           <div className="md:hidden border-t border-gray-600 py-4">
             <nav className="flex flex-col space-y-4">
               {navigation.map((item) => (
-                <Link key={item.name} href={item.href}>
-                  <span
-                    className={`hover:text-blue-300 transition-colors duration-200 font-medium cursor-pointer ${
-                      location === item.href ? "text-blue-300" : ""
-                    }`}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {item.name}
-                  </span>
-                </Link>
+                <NavLink
+                  key={item.name}
+                  to={item.href}
+                  className={({ isActive }) =>
+                    `hover:text-blue-300 font-medium transition-colors cursor-pointer ${
+                      isActive ? "text-blue-300" : ""
+                    }`
+                  }
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {item.name}
+                </NavLink>
               ))}
             </nav>
           </div>

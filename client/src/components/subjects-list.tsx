@@ -54,9 +54,13 @@ export default function SubjectsList({ branch, year, sem, pattern }: Props) {
 
       const mapped = data.map((item: any) => ({
         Product_id: item._id,
-        title: item.Title,
-        description: item.Description,
-        syllabus: item.syllabus,
+        title: item.title,
+        description: item.discription,
+        syllabus: item.syllabus.map((unit: any) => ({
+          id: unit.unitid,
+          unit: unit.unitno,
+          content: "Click View to see details", // Placeholder text
+        })),
       }));
 
       setSubjects(mapped);
@@ -75,35 +79,39 @@ export default function SubjectsList({ branch, year, sem, pattern }: Props) {
 
   return (
     <div className="space-y-6">
-      {subjects.map((subject) => (
-        <Card
-          key={subject.Product_id}
-          className="p-4 border shadow-sm cursor-pointer hover:shadow-md"
-          onClick={() => toggleDropdown(subject.Product_id)}
-        >
-          <div className="font-semibold text-lg">{subject.title}</div>
-          <div className="text-sm text-gray-600">{subject.description}</div>
+      {subjects.length === 0 ? (
+        <p className="text-center text-gray-500">No subjects found.</p>
+      ) : (
+        subjects.map((subject) => (
+          <Card
+            key={subject.Product_id}
+            className="p-4 border shadow-sm cursor-pointer hover:shadow-md"
+            onClick={() => toggleDropdown(subject.Product_id)}
+          >
+            <div className="font-semibold text-lg">{subject.title}</div>
+            <div className="text-sm text-gray-600">{subject.description}</div>
 
-          {expandedSubjectId === subject.Product_id && (
-            <div className="mt-4 space-y-3">
-              {subject.syllabus.map((unit, idx) => (
-                <div
-                  key={idx}
-                  className="flex items-center justify-between border p-2 rounded-md bg-purple-50"
-                >
-                  <div>
-                    <div className="font-medium">{unit.unit}</div>
-                    <div className="text-sm text-gray-500">{unit.content}</div>
+            {expandedSubjectId === subject.Product_id && (
+              <div className="mt-4 space-y-3">
+                {subject.syllabus.map((unit, idx) => (
+                  <div
+                    key={idx}
+                    className="flex items-center justify-between border p-2 rounded-md bg-purple-50"
+                  >
+                    <div>
+                      <div className="font-medium">{unit.unit}</div>
+                      <div className="text-sm text-gray-500">{unit.content}</div>
+                    </div>
+                    <Button onClick={() => handleView(unit.id)} variant="outline">
+                      View
+                    </Button>
                   </div>
-                  <Button onClick={() => handleView(unit.id)} variant="outline">
-                    View
-                  </Button>
-                </div>
-              ))}
-            </div>
-          )}
-        </Card>
-      ))}
+                ))}
+              </div>
+            )}
+          </Card>
+        ))
+      )}
     </div>
   );
 }
