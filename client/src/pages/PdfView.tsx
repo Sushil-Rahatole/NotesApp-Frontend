@@ -11,6 +11,7 @@ interface PdfData {
 export default function PdfView() {
   const { unitId } = useParams();
   const [data, setData] = useState<PdfData | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,8 +27,9 @@ export default function PdfView() {
 
         const result = await response.json();
         setData(result);
-      } catch (error) {
-        console.error("Failed to fetch PDF details:", error);
+      } catch (err: any) {
+        console.error("Failed to fetch PDF details:", err);
+        setError("Unable to load PDF. Please try again later.");
       }
     };
 
@@ -36,6 +38,7 @@ export default function PdfView() {
     }
   }, [unitId]);
 
+  if (error) return <p className="p-4 text-red-500">{error}</p>;
   if (!data) return <p className="p-4">Loading PDF details...</p>;
 
   return (
@@ -44,12 +47,12 @@ export default function PdfView() {
         <h1 className="text-2xl font-bold mb-2">{data.unitno}</h1>
         <p className="text-gray-600 mb-4">{data.discription}</p>
         <iframe
-          src={data.url}
+          src={encodeURI(data.url)}
           width="100%"
           height="600px"
           className="rounded-lg border"
           title="PDF Preview"
-        ></iframe>
+        />
       </div>
 
       <div className="w-[30%] p-4 border-l overflow-y-auto" style={{ maxHeight: "100vh" }}>
