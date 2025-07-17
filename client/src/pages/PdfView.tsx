@@ -19,7 +19,7 @@ const PdfView = () => {
     const fetchUnit = async () => {
       try {
         const response = await axios.get(`http://localhost:8000/api/get-pdf/${unitId}`);
-        setData(response.data);
+        setData(response.data[0]);
       } catch (error) {
         console.error("Failed to fetch unit data:", error);
       } finally {
