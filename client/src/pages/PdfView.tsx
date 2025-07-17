@@ -15,11 +15,14 @@ export default function PdfView() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:8000/api/get-pdf", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ id: unitId }),
+        const response = await fetch(`http://localhost:8000/api/get-pdf/${unitId}`, {
+          method: "GET",
+          headers: { "Content-Type": "application/json" }
         });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
 
         const result = await response.json();
         setData(result);
@@ -28,7 +31,9 @@ export default function PdfView() {
       }
     };
 
-    fetchData();
+    if (unitId) {
+      fetchData();
+    }
   }, [unitId]);
 
   if (!data) return <p className="p-4">Loading PDF details...</p>;
