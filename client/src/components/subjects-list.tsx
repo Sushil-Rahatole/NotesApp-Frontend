@@ -82,7 +82,7 @@ export default function SubjectsList({ branch, year, sem, pattern }: Props) {
   return (
     <div className="space-y-6">
       {subjects.length === 0 ? (
-        <p className="text-center text-gray-500">No subjects found.</p>
+        <p className="text-center text-gray-500">Loading...</p>
       ) : (
         subjects.map((subject) => (
           <Card
