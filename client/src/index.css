@@ -23,7 +23,7 @@
   --destructive-foreground: hsl(60, 9.1%, 97.8%);
   --ring: hsl(20, 14.3%, 4.1%);
   --radius: 0.5rem;
-  
+
   /* Custom Educational Platform colors - Encouraging & Energetic */
   --primary-purple: hsl(260, 60%, 45%);
   --primary-orange: hsl(25, 95%, 53%);
@@ -60,13 +60,15 @@
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: var(--border); /* ✅ Replaced @apply border-border */
   }
 
   body {
-    @apply font-sans antialiased bg-background text-foreground;
+    @apply font-sans antialiased;
+    background-color: var(--background);
+    color: var(--foreground);
   }
-  
+
   html {
     scroll-behavior: smooth;
   }
@@ -76,31 +78,31 @@
   .primary-purple {
     background-color: var(--primary-purple);
   }
-  
+
   .primary-orange {
     background-color: var(--primary-orange);
   }
-  
+
   .accent-teal {
     background-color: var(--accent-teal);
   }
-  
+
   .accent-green {
     background-color: var(--accent-green);
   }
-  
+
   .neutral-dark {
     background-color: var(--neutral-dark);
   }
-  
+
   .neutral-gray {
     background-color: var(--neutral-gray);
   }
-  
+
   .success-green {
     color: var(--success-green);
   }
-  
+
   .bg-warm {
     background-color: var(--background-light);
   }
