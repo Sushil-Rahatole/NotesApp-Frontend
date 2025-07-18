@@ -18,10 +18,7 @@ const PdfView = () => {
   useEffect(() => {
     const fetchUnit = async () => {
       try {
-        const response = await axios.post(`https://backendfornotes.onrender.com/api/get-pdf/${unitId}`, {
-          id: unitId,
-        });
-         console.log("Backend response:", response.data); 
+        const response = await axios.get(`https://backendfornotes.onrender.com/api/get-pdf/${unitId}`);
         setData(response.data[0]);
       } catch (error) {
         console.error("Failed to fetch unit data:", error);
