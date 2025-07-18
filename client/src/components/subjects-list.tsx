@@ -34,7 +34,7 @@ export default function SubjectsList({ branch, year, sem, pattern }: Props) {
 
   const fetchSubjects = async () => {
     try {
-      const response = await fetch("http://localhost:8000/api/get-subjects", {
+      const response = await fetch("https://backendfornotes.onrender.com/api/get-subjects", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

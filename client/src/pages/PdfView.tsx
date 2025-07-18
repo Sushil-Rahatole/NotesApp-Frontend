@@ -18,7 +18,10 @@ const PdfView = () => {
   useEffect(() => {
     const fetchUnit = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/get-pdf/${unitId}`);
+        const response = await axios.post(`https://backendfornotes.onrender.com/api/get-pdf/${unitId}`, {
+          id: unitId,
+        });
+         console.log("Backend response:", response.data); 
         setData(response.data[0]);
       } catch (error) {
         console.error("Failed to fetch unit data:", error);
@@ -98,14 +101,7 @@ const PdfView = () => {
         <Card className="shadow-lg border border-gray-200">
           <CardContent className="p-4">
             <h2 className="text-xl font-semibold mb-2">More Coming Soon...</h2>
-            <p className="text-sm text-gray-500 mb-4">
-              YouTube links and important questions will be added later.
-            </p>
-            <div className="mt-2">
-              <div className="bg-yellow-50 border-l-4 border-yellow-400 p-2 text-yellow-700 rounded">
-                <span className="font-medium">Tip:</span> You can zoom or print the PDF using your browser controls.
-              </div>
-            </div>
+            <p className="text-sm text-gray-500">YouTube links and important questions will be added later.</p>
           </CardContent>
         </Card>
       </div>
