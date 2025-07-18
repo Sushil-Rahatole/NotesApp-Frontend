@@ -54,28 +54,58 @@ const PdfView = () => {
     <div className="p-6 flex flex-col md:flex-row gap-6">
       {/* Left Content */}
       <div className="md:w-[70%] w-full">
-        <h1 className="text-2xl font-bold mb-2">{data.unitno}</h1>
-        <p className="text-gray-600 mb-4">{data.discription}</p>
+        {/* Header Bar */}
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            <h1 className="text-2xl font-bold">{data.unitno}</h1>
+            <p className="text-gray-600">{data.discription}</p>
+          </div>
+          <div className="flex gap-2">
+            <a
+              href={data.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+            >
+              Open PDF
+            </a>
+            <a
+              href={data.url}
+              download
+              className="px-3 py-1 bg-green-600 text-white rounded hover:bg-green-700 transition"
+            >
+              Download
+            </a>
+          </div>
+        </div>
 
-        <div className="w-full h-[600px] rounded overflow-hidden border shadow">
+        {/* PDF Viewer */}
+        <div className="w-full h-[600px] rounded-lg overflow-hidden border-2 border-gray-200 shadow-lg bg-gray-50 flex items-center justify-center">
           <iframe
             src={data.url}
             width="100%"
             height="100%"
             allow="autoplay"
             title="PDF Preview"
+            className="rounded-lg"
+            style={{ border: "none" }}
           />
         </div>
       </div>
 
       {/* Right Sidebar */}
       <div className="md:w-[30%] w-full mt-6 md:mt-0">
-        <Card>
+        <Card className="shadow-lg border border-gray-200">
           <CardContent className="p-4">
             <h2 className="text-xl font-semibold mb-2">More Coming Soon...</h2>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-gray-500 mb-4">
               YouTube links and important questions will be added later.
             </p>
+            <div className="mt-2">
+              <div className="bg-yellow-50 border-l-4 border-yellow-400 p-2 text-yellow-700 rounded">
+                <span className="font-medium">Tip:</span> You can zoom or print the PDF using your browser controls.
+              </div>
+            </div>
           </CardContent>
         </Card>
       </div>
