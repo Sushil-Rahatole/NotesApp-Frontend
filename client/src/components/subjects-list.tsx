@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 interface Subject {
   Product_id: string;
@@ -23,6 +25,7 @@ interface Props {
 
 export default function SubjectsList({ branch, year, sem, pattern }: Props) {
   const [subjects, setSubjects] = useState<Subject[]>([]);
+  const [loading, setLoading] = useState(false);
   const [expandedSubjectId, setExpandedSubjectId] = useState<string | null>(null);
   const navigate = useNavigate();
 
@@ -32,10 +35,9 @@ export default function SubjectsList({ branch, year, sem, pattern }: Props) {
     }
   }, [branch, year, sem, pattern]);
 
-
-
   const fetchSubjects = async () => {
     try {
+      setLoading(true);
       const response = await fetch(`${import.meta.env.VITE_BACKEND_API}/api/get-subjects`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -61,13 +63,15 @@ export default function SubjectsList({ branch, year, sem, pattern }: Props) {
         syllabus: item.syllabus.map((unit: any) => ({
           id: unit.unitid,
           unit: unit.unitno,
-          content: "Click View to see details", // Placeholder text
+          content: "Click View to see details",
         })),
       }));
 
       setSubjects(mapped);
     } catch (error) {
       console.error("Error fetching subjects:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -81,8 +85,30 @@ export default function SubjectsList({ branch, year, sem, pattern }: Props) {
 
   return (
     <div className="space-y-6">
-      {subjects.length === 0 ? (
-        <p className="text-center text-gray-500">Loading...</p>
+      {loading ? (
+        // Show 3 fake skeleton cards while loading
+        Array.from({ length: 3 }).map((_, index) => (
+          <Card key={index} className="p-4 border shadow-sm">
+            <Skeleton height={24} width={`60%`} className="mb-2" />
+            <Skeleton height={18} width={`80%`} />
+            <div className="mt-4 space-y-3">
+              {Array.from({ length: 2 }).map((__, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-center justify-between border p-2 rounded-md"
+                >
+                  <div>
+                    <Skeleton height={16} width={80} />
+                    <Skeleton height={12} width={150} />
+                  </div>
+                  <Skeleton height={32} width={70} />
+                </div>
+              ))}
+            </div>
+          </Card>
+        ))
+      ) : subjects.length === 0 ? (
+        <p className="text-center text-gray-500">No subjects found.</p>
       ) : (
         subjects.map((subject) => (
           <Card

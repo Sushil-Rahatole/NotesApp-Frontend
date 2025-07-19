@@ -11,7 +11,6 @@ import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
 import About from "@/pages/about";
 import Contact from "@/pages/contact";
-import PYQs from "@/pages/pyqs";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { ArrowUp } from "lucide-react";
@@ -54,7 +53,6 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
-                <Route path="/pyqs" element={<PYQs />} />
                 <Route path="/unit/:unitId" element={<PdfView />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
