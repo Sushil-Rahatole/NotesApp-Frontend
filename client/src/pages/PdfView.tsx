@@ -8,6 +8,8 @@ interface UnitData {
   unitno: string;
   discription: string;
   url: string;
+  question: string[];
+  youtube: string[];
 }
 
 const PdfView = () => {
@@ -54,7 +56,6 @@ const PdfView = () => {
     <div className="p-6 flex flex-col md:flex-row gap-6">
       {/* Left Content */}
       <div className="md:w-[70%] w-full">
-        {/* Header Bar */}
         <div className="flex items-center justify-between mb-4">
           <div>
             <h1 className="text-2xl font-bold">{data.unitno}</h1>
@@ -79,7 +80,6 @@ const PdfView = () => {
           </div>
         </div>
 
-        {/* PDF Viewer */}
         <div className="w-full h-[600px] rounded-lg overflow-hidden border-2 border-gray-200 shadow-lg bg-gray-50 flex items-center justify-center">
           <iframe
             src={data.url}
@@ -94,13 +94,43 @@ const PdfView = () => {
       </div>
 
       {/* Right Sidebar */}
-      <div className="md:w-[30%] w-full mt-6 md:mt-0">
-        <Card className="shadow-lg border border-gray-200">
-          <CardContent className="p-4">
-            <h2 className="text-xl font-semibold mb-2">More Coming Soon...</h2>
-            <p className="text-sm text-gray-500">YouTube links and important questions will be added later.</p>
-          </CardContent>
-        </Card>
+      <div className="md:w-[30%] w-full mt-6 md:mt-0 space-y-6">
+        {/* Important Questions */}
+        {data.question && data.question.length > 0 && (
+          <Card className="shadow-lg border border-gray-200">
+            <CardContent className="p-4">
+              <h2 className="text-xl font-semibold mb-2">Important Questions</h2>
+              <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
+                {data.question.map((q, index) => (
+                  <li key={index}>{q}</li>
+                ))}
+              </ul>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* YouTube Links */}
+        {data.youtube && data.youtube.length > 0 && (
+          <Card className="shadow-lg border border-gray-200">
+            <CardContent className="p-4">
+              <h2 className="text-xl font-semibold mb-2">YouTube Links</h2>
+              <ul className="list-disc list-inside text-sm text-blue-600 space-y-2">
+                {data.youtube.map((link, index) => (
+                  <li key={index}>
+                    <a
+                      href={link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:underline"
+                    >
+                      Watch Video {index + 1}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </CardContent>
+          </Card>
+        )}
       </div>
     </div>
   );
