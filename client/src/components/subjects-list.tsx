@@ -1,9 +1,10 @@
+// src/components/SubjectsList.tsx
+
 import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
+import LoadingNotes from "./ui/LoadingNotes";
 
 interface Subject {
   Product_id: string;
@@ -17,36 +18,44 @@ interface Subject {
 }
 
 interface Props {
-  branch: string;
-  year: string;
-  sem: string;
-  pattern: string;
+  branch?: string;
+  year?: string;
+  sem?: string;
+  pattern?: string;
 }
+
+const titles = [
+  "Scholar", "Captain", "Trailblazer", "Visionary", "Learner",
+  "Achiever", "Explorer", "Champion", "Seeker", "Prodigy",
+  "Thinker", "Creator", "Strategist", "Inventor", "Doer"
+];
 
 export default function SubjectsList({ branch, year, sem, pattern }: Props) {
   const [subjects, setSubjects] = useState<Subject[]>([]);
   const [loading, setLoading] = useState(false);
   const [expandedSubjectId, setExpandedSubjectId] = useState<string | null>(null);
+
+  const [userTitle] = useState(() => {
+    const randomIndex = Math.floor(Math.random() * titles.length);
+    return titles[randomIndex];
+  });
+
   const navigate = useNavigate();
 
   useEffect(() => {
     if (branch && year && sem && pattern) {
       fetchSubjects();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [branch, year, sem, pattern]);
 
   const fetchSubjects = async () => {
+    setLoading(true);
     try {
-      setLoading(true);
       const response = await fetch(`${import.meta.env.VITE_BACKEND_API}/api/get-subjects`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          branch,
-          year,
-          sem,
-          pattern,
-        }),
+        body: JSON.stringify({ branch, year, sem, pattern }),
       });
 
       const data = await response.json();
@@ -86,27 +95,9 @@ export default function SubjectsList({ branch, year, sem, pattern }: Props) {
   return (
     <div className="space-y-6">
       {loading ? (
-        // Show 3 fake skeleton cards while loading
-        Array.from({ length: 3 }).map((_, index) => (
-          <Card key={index} className="p-4 border shadow-sm">
-            <Skeleton height={24} width={`60%`} className="mb-2" />
-            <Skeleton height={18} width={`80%`} />
-            <div className="mt-4 space-y-3">
-              {Array.from({ length: 2 }).map((__, idx) => (
-                <div
-                  key={idx}
-                  className="flex items-center justify-between border p-2 rounded-md"
-                >
-                  <div>
-                    <Skeleton height={16} width={80} />
-                    <Skeleton height={12} width={150} />
-                  </div>
-                  <Skeleton height={32} width={70} />
-                </div>
-              ))}
-            </div>
-          </Card>
-        ))
+        <div className="flex flex-col items-center justify-center mt-10 space-y-6">
+          <LoadingNotes userTitle={userTitle} />
+        </div>
       ) : subjects.length === 0 ? (
         <p className="text-center text-gray-500">No subjects found.</p>
       ) : (

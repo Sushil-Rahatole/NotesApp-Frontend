@@ -1,3 +1,5 @@
+// src/components/FilterSection.tsx
+
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 interface FilterSectionProps {
@@ -39,7 +41,7 @@ export default function FilterSection({
       {/* Branch Selection */}
       <div className="mb-6">
         <label className="block text-sm font-medium text-gray-700 mb-2">Engineering Branch</label>
-        <Select value={selectedBranch} onValueChange={onBranchChange}>
+        <Select defaultValue={branches[0]?.name} value={selectedBranch} onValueChange={onBranchChange}>
           <SelectTrigger className="w-full border-orange-300 focus:border-purple-500">
             <SelectValue placeholder="Select Engineering Branch" />
           </SelectTrigger>
@@ -55,7 +57,6 @@ export default function FilterSection({
 
       {/* Filters */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-        {/* Academic Year */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">Academic Year</label>
           <Select value={selectedYear} onValueChange={onYearChange}>
@@ -71,7 +72,6 @@ export default function FilterSection({
           </Select>
         </div>
 
-        {/* Semester */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">Semester</label>
           <Select value={selectedSem} onValueChange={onSemChange}>
@@ -85,7 +85,6 @@ export default function FilterSection({
           </Select>
         </div>
 
-        {/* Pattern */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">Pattern</label>
           <Select value={selectedPattern} onValueChange={onPatternChange}>
@@ -102,3 +101,5 @@ export default function FilterSection({
     </div>
   );
 }
+
+export {branches}
