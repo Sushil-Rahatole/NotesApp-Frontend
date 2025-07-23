@@ -45,16 +45,6 @@ export default function About() {
                   ))}
                 </ul>
               </div>
-
-              {/* Disclaimer */}
-              <div className="mt-8">
-                <div className="bg-yellow-100 border-l-4 border-yellow-400 p-4 rounded-xl shadow-sm">
-                  <h4 className="font-semibold text-yellow-800 mb-1">Disclaimer</h4>
-                  <p className="text-yellow-700 text-sm">
-                    All notes and study materials are owned by their respective owners. StudyHub is only a platform to help students by providing access to these notes. We do not claim ownership of any content and act solely as a facilitator.
-                  </p>
-                </div>
-              </div>
             </div>
 
             <div className="lg:text-right">

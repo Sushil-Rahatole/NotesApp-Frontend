@@ -38,6 +38,16 @@ const universities: University[] = [
     students: "800K+",
     description: "Premier metropolitan university"
   },
+  {
+    id: "PUNE",
+    name: "Pune University",
+    shortName: "PU", 
+    location: "Pune, Maharashtra",
+    status: "coming-soon",
+    color: "from-teal-600 to-green-600",
+    students: "300K+",
+    description: "Renowned academic institution"
+  }
 ];
 
 export default function Sidebar({ selectedUniversity, onUniversityChange }: SidebarProps) {
